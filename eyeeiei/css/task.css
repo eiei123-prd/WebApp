@@ -1,0 +1,164 @@
+    /*Task*/
+    .task {
+        font-family: Arial, sans-serif,"Kanit";
+        margin-bottom: 20px;
+        text-align: center; /* จัดข้อความทั้งหมดให้อยู่ตรงกลาง */
+        background-image: url('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRQ6cQmNOffmsLQ5E6D9-yKq8-q0zj2XA0JvlPDIR36i2q-ZGfn'); 
+        color: #99d74377; /* สีข้อความสีเขียวเข้ม */
+        background-size: cover; /* ทำให้ภาพครอบคลุมทั้งพื้นหลัง */
+        background-position: center center; /* จัดภาพให้อยู่ที่กลางของพื้นที่ */
+        background-repeat: no-repeat; /* ป้องกันการทำซ้ำของภาพ */
+    }
+        
+    h4 {
+        color: #131814; /* FONT COLOR */
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+        
+    .form-group {
+        display: inline-block;
+        text-align: left;
+        background-color: #ffffff;;  
+        border: 2px solid #ced8cf; /* กรอบสีเขียวเข้ม */
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 10px;
+        box-shadow: 0 6px 12px rgba(0, 128, 0, 0.15); /* เงาสีเขียวเข้ม */
+    }
+        
+    .form-group label {
+        color: #208326; /* สีข้อความของ label เป็นสีเขียวเข้ม */
+        margin: 0;
+        font-weight: bold; /* ข้อความหนา */
+    }
+        
+    .form-group select, .form-group input, .form-group button {
+        padding: 8px;
+        margin: 0;
+        border-radius: 5px;
+        border: 1px solid #66bb6a; /* เส้นขอบสีเขียวอ่อน */
+        font-size: 1rem;
+        background-color: #c8e6c9; /* พื้นหลังสีเขียวอ่อน */
+        color: #076720; /* สีข้อความใน input เป็นสีเขียวเข้ม */
+        }
+        
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        color: white;
+        background-color: #43a047; /* สีพื้นหลังของปุ่มเป็นสีเขียวสดใส */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        box-shadow: 0 4px 8px rgba(56, 142, 60, 0.3); /* เงาสีเขียวเข้ม */
+    }
+        
+    button:hover {
+        background-color: #91da95; /* เปลี่ยนเป็นสีเขียวเข้มเมื่อ hover */
+    }
+        
+    button.clicked {
+        background-color: #f04848; /* เปลี่ยนเป็นสีเขียวเข้มมากเมื่อกด */
+        color : #ffffff;
+        box-shadow: 0 4px 8px rgba(56, 142, 60, 0.3);
+        border: 1px solid #830000; /* เส้นขอบสีเขียวอ่อน */
+    }
+   
+
+        
+         
+    .icon {
+        font-size: 1.5rem;
+        color: #b2c5b4; /* สีของไอคอนในปุ่ม */
+        margin-right: 5px; /* ระยะห่างระหว่างไอคอนและข้อความ */
+    }
+        
+    .box-icon {
+        font-size: 2rem;
+        color: #93e999; /* สีไอคอนเป็นสีเขียวเข้ม */
+        border: 2px solid #e8f5e9; /* กรอบสีเขียวเข้ม */
+        border-radius: 50%;
+        padding: 1px;
+        margin-right: 8px; /* ระยะห่างระหว่างไอคอนและข้อความ */
+    }
+        
+    .result-container {
+        margin-top: 10px;
+        font-size: 1.2rem;
+        color: #1b5e20; /* สีข้อความเป็นสีเขียวเข้ม */
+    }
+        
+    /* สไตล์สำหรับปุ่มยืนยัน */
+    .confirm {
+        background-color: green; /* สีพื้นหลังสำหรับปุ่มยืนยัน */
+        color: white; /* สีข้อความสำหรับปุ่มยืนยัน */
+        border: none; /* ลบกรอบปุ่ม */
+        padding: 10px 20px; /* เพิ่ม padding */
+        cursor: pointer; /* เปลี่ยน cursor เป็น pointer เมื่อ hover */
+        font-size: 16px; /* ขนาดฟอนต์ */
+    }
+
+    .result-container {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+    
+    .box-icon {
+        color: green;
+        margin-right: 8px;
+    }
+
+    .confirmation-message {
+        margin-left: 10px; /* เพิ่มระยะห่างจากปุ่ม */
+        color: green; /* สีข้อความเมื่อยืนยันแล้ว */
+        font-weight: ; /* ตัวหนา */
+        display: inline-block; /* ให้ข้อความแสดงในบรรทัดเดียวกับปุ่ม */
+        vertical-align: middle; /* จัดแนวกลางในแนวตั้ง */
+    }
+    
+
+
+   /* แถบเมนู Task */
+.task-options {
+    display: none; /* ซ่อนเมนูย่อยเริ่มต้น */
+    position: absolute; /* ให้เมนูย่อยอยู่เหนือรายการ */
+    background-color: #ffffff; /* สีพื้นหลังเมนู */
+    border: 1px solid #EDFcbe; /* เส้นขอบ */
+    z-index: 1000; /* ให้แถบเมนูอยู่ข้างหน้า */
+}
+
+/* การจัดรูปแบบตัวเลือกในเมนู Task */
+.task-option {
+    display: block; /* ทำให้ตัวเลือกแสดงเป็นบล็อก */
+    padding: 10px; /* ระยะห่าง */
+    text-decoration: none; /* ไม่มีการขีดเส้นใต้ */
+    color: #333; /* สีของตัวอักษร */
+}
+
+.task-option:hover {
+    background-color: #EDFcbe; /* เปลี่ยนสีพื้นเมื่อวางเมาส์ */
+}
+
+/* เมนู Task Button */
+#taskButton {
+    position: relative; /* ช่วยให้แสดงเมนูย่อยได้ */
+}
+
+
+
+/* สไตล์ปุ่ม Task */
+#taskButton {
+    cursor: pointer; /* แสดงว่าเป็นปุ่มคลิกได้ */
+}
+
+/* ปรับสไตล์ให้เหมาะสมกับหน้าจอมือถือ */
+@media (max-width: 768px) {
+    .task-options {
+        width: 100%; /* ให้เมนูย่อยเต็มความกว้าง */
+    }
+}

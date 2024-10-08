@@ -31,8 +31,16 @@
             <li><a href="#creator">Creator</a></li>
             <li><a href="#information">Information</a></li>
             <li><a href="#about">About</a></li>            
-            <li><a href="#task">Task</a></li>
-        </ul>
+            <li>
+                <a href="#task" id="taskButton" onclick="toggleTaskOptions()">Task</a>
+                <ul id="taskOptions" class="task-options">
+                    <li><a href="#manual" onclick="showManualControl()">ควบคุมด้วยตัวเอง</a></li>
+                    <li><a href="#automatic" onclick="showAutomaticFeeding()">ปล่อยอาหารอัตโนมัติ</a></li>
+                </ul>
+            </li>
+        </ul>   
+    
+ 
 
         <!-- Profile -->
         <div class="profile">
@@ -43,40 +51,65 @@
     </header>
      
     <!-- Home -->
-    <section class="home swiper" id="home">
-        <div class="swiper-wrapper">
-            <!-- <img src="img/bg.png" alt=""> -->
-            <!-- slide 1 -->
-            <div class="swiper-slide container">
+<section class="home swiper-container" id="home">
+    <div class="swiper-wrapper">
+        <!-- Slide 1 -->
+        <div class="swiper-slide" style="background-image: ('img/11.png');">
+            <div class="container">
                 <div class="home-text">
-                    <!-- <p style="background-image: url('bg.png');"></p> -->
-                    <h1>ยินดีต้อนรับ<br> </h1>
-                    <h2>เว็บแอปพลิเคชันเป็นส่วนหนึ่งของโครงงาน<br></h2>
-                    <h3>การสร้างชุดต้นแบบเครื่องผสมอาหารลูกไก่ควบคุมผ่านเว็บแอปพลิเคชัน</h3>
-                    <!-- <a href="#" class="btn">shop now <i class='bx bx-right-arrow-alt'></i> -->
+                    <h1>ยินดีต้อนรับ</h1>
+                    <h2>เว็บแอปพลิเคชันเป็นส่วนหนึ่งของโครงงาน</h2>
+                    <h2>การสร้างชุดต้นแบบเครื่องผสมอาหารลูกไก่ควบคุมผ่านเว็บแอปพลิเคชัน</h2>
                 </div>
-                <img src="img/bg.png" alt="">
-            </div>
-            <!-- slide 2 -->  
-            <div class="swiper-slide container">
-                <div class="home-text">
-                    <!-- <span>we are delicacy</span> -->
-                    <h1>คู่มือการใช้งาน<br>เว็บแอปพลิเคชัน<br>เครื่องผสมอาหารลูกไก่</h1>
-                    <!-- <a href="#" class="btn">shop now <i class='bx bx-right-arrow-alt'></i> -->
-                </div>
-                <img src="img/manual1.jpg" alt="">
-            </div>
-            <!-- slide 3 -->
-            <div class="swiper-slide container">
-                <div class="home-text">
-                <!-- <span>we are delicacy</span> -->
-                <h1>คู่มือการใช้งาน<br>การควบคุม<br>เครื่องผสมอาหาร<br></h1>
-                <!-- <a href="#" class="btn">shop now <i class='bx bx-right-arrow-alt'></i> -->
-                </div>
-                <img src="img/homeswiper3.png" alt="">
             </div>
         </div>
-    </section>
+        <!-- Slide 2 -->
+        <div class="swiper-slide" style="background-image: url('img/manual1.jpg');">
+            <div class="container">
+                <div class="home-text">
+                    <h1>คู่มือการใช้งาน</h1>
+                    <h2>เว็บแอปพลิเคชันเครื่องผสมอาหารลูกไก่</h2>
+                </div>
+            </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="swiper-slide" style="background-image: url('img/homeswiper3.png');">
+            <div class="container">
+                <div class="home-text">
+                    <h1>คู่มือการใช้งาน</h1>
+                    <h2>การควบคุมเครื่องผสมอาหาร</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Swiper Navigation Buttons -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</section>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- JS Initialization for Swiper -->
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        loop: true, /* Loop the slides */
+        autoplay: {
+            delay: 5000, /* Automatically transition every 5 seconds */
+            disableOnInteraction: false, /* Keep autoplay after user interaction */
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        effect: 'fade', /* Use fade effect for smooth transitions */
+        fadeEffect: {
+            crossFade: true
+        },
+        slidesPerView: 1, /* Show one slide at a time */
+    });
+</script>
+
 
     <!-- creator -->
     <section class="creator" id="creator">
@@ -200,13 +233,13 @@
     </section>  
     
     <!-- Task -->
-    <section class="task" id="task">
-        <!-- Task -->
+    <section class="task" id="automatic" style="display: none;">        <!-- Task -->
         <h4>เลือกจำนวนอาหารและเวลา</h4>
         <div class="form-group">
             <!-- เลือกจำนวนอาหาร -->
             <label for="foodQuantity1">เลือกจำนวนอาหาร:</label>
             <select id="foodQuantity1">
+                <option value="" disabled selected></option> <!-- ตัวเลือกเริ่มต้นไม่มีข้อความ -->                
                 <option value="35">35 กรัม</option>
                 <option value="55">55 กรัม</option>
                 <option value="105">105 กรัม</option>
@@ -217,16 +250,18 @@
             <label for="timeSelect1">เลือกเวลา:</label>
             <input type="time" id="timeSelect1" name="timeSelect1" min="09:00" max="18:00" required />
         
-            <!-- ปุ่มยืนยัน -->
-            <button id="confirmButton1" onclick="confirmSelection('1')">
-                ยืนยัน
-            </button>
-        </div><br>
+            <!-- ปุ่มยืนยัน/ยกเลิก -->
+            <button id="confirmCancelButton1" onclick="confirmOrCancel(1)">ยืนยัน</button>
+            <span id="confirmationMessage1" class="confirmation-message"></span> <!-- พื้นที่แสดงข้อความข้างปุ่ม -->
         
+        </div><br>
+        <!-- ส่วนแสดงผล -->
+        <div id="resultDiv"></div> <!-- กำหนดพื้นที่แสดงข้อความ -->
         <div class="form-group">
-            <!-- เลือกจำนวนอาหาร -->
+            <!-- เลือกจำนวนอาหาร -->  
             <label for="foodQuantity2">เลือกจำนวนอาหาร:</label>
             <select id="foodQuantity2">
+                <option value="" disabled selected></option> <!-- ตัวเลือกเริ่มต้นไม่มีข้อความ -->
                 <option value="35">35 กรัม</option>
                 <option value="55">55 กรัม</option>
                 <option value="105">105 กรัม</option>
@@ -237,16 +272,20 @@
             <label for="timeSelect2">เลือกเวลา:</label>
             <input type="time" id="timeSelect2" name="timeSelect2" min="09:00" max="18:00" required />
         
-            <!-- ปุ่มยืนยัน -->
-            <button id="confirmButton2" onclick="confirmSelection('2')">
-                ยืนยัน
-            </button>
+            <!-- ปุ่มยืนยัน/ยกเลิก -->
+            <button id="confirmCancelButton2" onclick="confirmOrCancel(2)">ยืนยัน</button>
+            <span id="confirmationMessage2" class="confirmation-message"></span> <!-- พื้นที่แสดงข้อความข้างปุ่ม -->
+
+
         </div><br>
-        
+            
+       
+ 
         <div class="form-group">
             <!-- เลือกจำนวนอาหาร -->
             <label for="foodQuantity3">เลือกจำนวนอาหาร:</label>
             <select id="foodQuantity3">
+                <option value="" disabled selected></option> <!-- ตัวเลือกเริ่มต้นไม่มีข้อความ -->                
                 <option value="35">35 กรัม</option>
                 <option value="55">55 กรัม</option>
                 <option value="105">105 กรัม</option>
@@ -257,16 +296,18 @@
             <label for="timeSelect3">เลือกเวลา:</label>
             <input type="time" id="timeSelect3" name="timeSelect3" min="09:00" max="18:00" required />
         
-            <!-- ปุ่มยืนยัน -->
-            <button id="confirmButton3" onclick="confirmSelection('3')">
-                ยืนยัน
-            </button>
+            <!-- ปุ่มยืนยัน/ยกเลิก -->
+            <button id="confirmCancelButton3" onclick="confirmOrCancel(3)">ยืนยัน</button>
+            <span id="confirmationMessage3" class="confirmation-message"></span> <!-- พื้นที่แสดงข้อความข้างปุ่ม -->
+
         </div><br>
         
+
         <div class="form-group">
             <!-- เลือกจำนวนอาหาร -->
             <label for="foodQuantity4">เลือกจำนวนอาหาร:</label>
             <select id="foodQuantity4">
+                <option value="" disabled selected></option> <!-- ตัวเลือกเริ่มต้นไม่มีข้อความ -->                
                 <option value="35">35 กรัม</option>
                 <option value="55">55 กรัม</option>
                 <option value="105">105 กรัม</option>
@@ -276,15 +317,18 @@
             <!-- เลือกเวลา -->
             <label for="timeSelect4">เลือกเวลา:</label>
             <input type="time" id="timeSelect4" name="timeSelect4" min="09:00" max="18:00" required />
-        
-            <!-- ปุ่มยืนยัน -->
-            <button id="confirmButton4" onclick="confirmSelection('4')">
-                ยืนยัน
-            </button>
+            
+            <!-- ปุ่มยืนยัน/ยกเลิก -->
+            <button id="confirmCancelButton4" onclick="confirmOrCancel(4)">ยืนยัน</button>
+            <span id="confirmationMessage4" class="confirmation-message"></span> <!-- พื้นที่แสดงข้อความข้างปุ่ม -->
+
         </div><br>
         
+
         <!-- ส่วนแสดงผล -->
-        <div id="result" class="result-container"></div>
+        <div id="resultDiv"></div> <!-- กำหนดพื้นที่แสดงข้อความ -->
+    </section>
+    <section class="task" id="manual" style="display: none;">        <!-- Task -->
 
         <div class="container-gauge">
             <h4>ควบคุมด้วยตัวเอง</h4>
